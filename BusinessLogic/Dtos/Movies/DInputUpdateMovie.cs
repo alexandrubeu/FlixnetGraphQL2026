@@ -13,7 +13,7 @@ namespace BusinessLogic.Dtos
         [Required]
         public string VideoSource { get; set; } = string.Empty;
 
-        public List<string> TrailerUrls { get; set; } = new();
+        public string? TrailerUrl { get; set; }
 
         public bool Published { get; set; }
 

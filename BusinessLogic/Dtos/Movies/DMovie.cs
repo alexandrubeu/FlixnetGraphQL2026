@@ -6,7 +6,7 @@ namespace BusinessLogic.Dtos
         public string Title { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
         public string VideoSource { get; set; } = string.Empty;
-        public List<string> TrailerUrls { get; set; } = new();
+        public string? TrailerUrl { get; set; }
         public bool Published { get; set; }
         public List<DGenre> Genres { get; set; } = new();
         public List<DCastCrewCredit> CastAndCrew { get; set; } = new();
