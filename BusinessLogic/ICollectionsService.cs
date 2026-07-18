@@ -4,10 +4,10 @@ namespace BusinessLogic
 {
     public interface ICollectionsService
     {
-        DCollection? GetById(int id);
-        Pagination<DCollection> GetAll(PaginationParam paginationParam);
-        DCollection Add(DInputCreateCollection input);
-        DCollection? Update(int id, DInputUpdateCollection input);
-        bool Delete(int id);
+        Task<DCollection?> GetByIdAsync(int id, CancellationToken token = default);
+        Task<Pagination<DCollection>> GetAllAsync(PaginationParam paginationParam, CancellationToken token = default);
+        Task<DCollection> AddAsync(DInputCreateCollection input, CancellationToken token = default);
+        Task<DCollection?> UpdateAsync(int id, DInputUpdateCollection input, CancellationToken token = default);
+        Task<bool> DeleteAsync(int id, CancellationToken token = default);
     }
 }

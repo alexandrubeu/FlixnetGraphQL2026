@@ -4,7 +4,6 @@ namespace BusinessLogic.Dtos
 {
     public class DInputCreateGenre
     {
-        [Required]
-        public string Name { get; set; } = string.Empty;
+        public required string Name { get; set; } = string.Empty;
     }
 }

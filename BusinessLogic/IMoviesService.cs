@@ -4,10 +4,10 @@ namespace BusinessLogic
 {
     public interface IMoviesService
     {
-        DMovie? GetById(int id);
-        Pagination<DMovieSummary> GetAll(string? term, PaginationParam paginationParam);
-        DMovie Add(DInputCreateMovie input);
-        DMovie? Update(int id, DInputUpdateMovie input);
-        bool Delete(int id);
+        Task<DMovie?> GetByIdAsync(int id, CancellationToken ct = default);
+        Task<Pagination<DMovieSummary>> GetAllAsync(string? term, PaginationParam paginationParam, CancellationToken ct = default);
+        Task<DMovie> AddAsync(DInputCreateMovie input, CancellationToken ct = default);
+        Task<DMovie?> UpdateAsync(int id, DInputUpdateMovie input, CancellationToken ct = default);
+        Task<bool> DeleteAsync(int id, CancellationToken ct = default);
     }
 }

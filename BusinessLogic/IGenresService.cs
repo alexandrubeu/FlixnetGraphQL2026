@@ -4,10 +4,10 @@ namespace BusinessLogic
 {
     public interface IGenresService
     {
-        IEnumerable<DGenre> GetAll();
-        DGenre? GetById(int id);
-        DGenre Add(DInputCreateGenre input);
-        DGenre? Update(int id, DInputUpdateGenre input);
-        bool Delete(int id);
+        Task<IEnumerable<DGenre>> GetAllAsync(CancellationToken token = default);
+        Task<DGenre?> GetByIdAsync(int id, CancellationToken token = default);
+        Task<DGenre> AddAsync(DInputCreateGenre input, CancellationToken token = default);
+        Task<DGenre?> UpdateAsync(int id, DInputUpdateGenre input, CancellationToken token = default);
+        Task<bool> DeleteAsync(int id, CancellationToken token = default);
     }
 }
