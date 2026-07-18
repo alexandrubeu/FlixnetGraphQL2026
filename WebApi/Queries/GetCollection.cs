@@ -1,6 +1,6 @@
 ﻿namespace WebApi.Queries;
 
-public class GetMoviesQuery
+public class GetCollection
 {
     
 }
