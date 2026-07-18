@@ -1,0 +1,15 @@
+Domain
+├── Entities
+└── Repository interfaces
+
+Application [Domain]
+├── DTOs
+├── Service interfaces
+└── Service implementations
+
+Infrastructure [Domain, EF]
+├── DbContext
+└── Repository implementations
+
+WebApi [Application, Infrastructure, HotChocolate]
+└── GraphQL
