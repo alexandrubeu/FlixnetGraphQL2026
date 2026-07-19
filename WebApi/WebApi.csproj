@@ -11,9 +11,19 @@
     <PackageReference Include="HotChocolate.Data.EntityFramework" Version="16.5.0" />
   </ItemGroup>
 
+<<<<<<< HEAD
     <ItemGroup>
         <ProjectReference Include="..\Application\Application.csproj" />
         <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
+=======
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+  </ItemGroup>
+  
+>>>>>>> 164d2c4015dc9b5b2623b7f34564ee9c00952605
 
 </Project>

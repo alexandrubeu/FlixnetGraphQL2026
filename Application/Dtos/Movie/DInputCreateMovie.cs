@@ -9,6 +9,6 @@ public class DInputCreateMovie
     public required string VideoSource { get; set; }
     public string? TrailerUrl { get; set; }
     public bool Published { get; set; }
-    public List<int> GenreIds { get; set; } = [];
+    public List<string> Genre{ get; set; } = [];
     public List<DCastCrewCredit> CastAndCrew { get; set; } = [];
 }
