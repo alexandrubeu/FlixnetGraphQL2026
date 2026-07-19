@@ -9,4 +9,6 @@ public class DataBaseContext(DbContextOptions<DataBaseContext> options) : DbCont
     public DbSet<EGenre> Genres { get; set; }
     public DbSet<ECollection> Collections { get; set; }
     public DbSet<ECastCrewCredit> Credits { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder) { }
 }

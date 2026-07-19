@@ -18,7 +18,7 @@ public class DInputCreateMovie
 
     public bool Published { get; set; } = false;
 
-    public List<int> GenreIds { get; set; } = new();
+    public List<int> GenreIds { get; set; } = [];
 
-    public List<DInputCastCrewCredit> CastAndCrew { get; set; } = new();
+    public List<DInputCastCrewCredit> CastAndCrew { get; set; } = [];
 }

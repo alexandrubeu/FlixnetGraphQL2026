@@ -7,7 +7,7 @@ namespace Presentation.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class MoviesController(IMoviesService moviesService) : ControllerBase
+public class MoviesController(IMoviesService service) : ControllerBase
 {
     [HttpGet]
     public ActionResult<Pagination<DMovie>> GetAll(string? term, PaginationParam paginationParam)

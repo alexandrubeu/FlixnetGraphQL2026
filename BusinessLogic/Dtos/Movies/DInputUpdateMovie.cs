@@ -18,7 +18,7 @@ public class DInputUpdateMovie
 
     public bool Published { get; set; }
 
-    public List<int> GenreIds { get; set; } = new();
+    public List<int> GenreIds { get; set; } = [];
 
-    public List<DInputCastCrewCredit> CastAndCrew { get; set; } = new();
+    public List<DInputCastCrewCredit> CastAndCrew { get; set; } = [];
 }

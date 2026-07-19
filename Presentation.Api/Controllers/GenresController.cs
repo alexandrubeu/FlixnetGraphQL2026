@@ -8,7 +8,7 @@ namespace Presentation.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class GenresController(IMoviesService moviesService) : ControllerBase
+public class GenresController(IGenresService service) : ControllerBase
 {
     [HttpGet]
     public ActionResult<Pagination<DGenre>> GetAll(string? term, PaginationParam paginationParam)

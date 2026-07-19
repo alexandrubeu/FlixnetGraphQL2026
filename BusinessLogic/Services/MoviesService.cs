@@ -44,7 +44,7 @@ public class MoviesService(IMoviesRepository repo) : IMoviesService
             Page = paginationParam.Page,
             PerPage = paginationParam.PerPage,
             // Items = items.Select(MovieMapper.toDto).ToList(),
-            Items = new List<DMovie>(),
+            Items = [],
         };
     }
 }

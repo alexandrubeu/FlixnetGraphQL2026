@@ -9,5 +9,5 @@ public class DInputUpdateCollection
 
     public bool Published { get; set; }
 
-    public List<int> MovieIds { get; set; } = new();
+    public List<int> MovieIds { get; set; } = [];
 }
