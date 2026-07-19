@@ -1,5 +1,13 @@
-﻿namespace Infrastructure.Persistence.Context;
+﻿using Domain.Entities.Collection;
+using Domain.Entities.Genre;
+using Domain.Entities.Movie;
+using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext
+namespace Infrastructure.Persistence.Context;
+
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
+    public DbSet<Collection> Collections => Set<Collection>();
+    public DbSet<Genre> Genres => Set<Genre>();
+    public DbSet<Movie> Movies => Set<Movie>();
 }
