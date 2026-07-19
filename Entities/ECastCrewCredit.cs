@@ -8,6 +8,6 @@ namespace Entities
         public string? StageName { get; set; }
 
         public int MovieId { get; set; }
-        public EMovie Movie { get; set; } = null!;
+        public EMovie? Movie { get; set; }
     }
 }

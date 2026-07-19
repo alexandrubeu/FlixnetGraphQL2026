@@ -11,6 +11,6 @@ namespace Entities
         public ICollection<EGenre> Genres { get; set; } = new List<EGenre>();
         public ICollection<ECastCrewCredit> CastAndCrew { get; set; } = new List<ECastCrewCredit>();
         public ICollection<ECollection> Collections { get; set; } = new List<ECollection>();
-        public ICollection<EMovieTrailer> Trailers { get; set; } = new List<EMovieTrailer>();
+        public string? TrailerUrl { get; set; }
     }
 }
