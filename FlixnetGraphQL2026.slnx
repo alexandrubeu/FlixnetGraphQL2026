@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="BusinessLogic/BusinessLogic.csproj" />
+  <Project Path="Common/Common.csproj" />
+  <Project Path="Presentation.Api/Presentation.Api.csproj" />
 </Solution>

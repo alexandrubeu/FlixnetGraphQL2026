@@ -1,4 +1,7 @@
-namespace BusinessLogic.Dtos
+using BusinessLogic.Dtos.CastCrew;
+using BusinessLogic.Dtos.Genres;
+
+namespace BusinessLogic.Dtos.Movies
 {
     public class DMovie
     {

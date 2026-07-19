@@ -1,10 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BusinessLogic.Dtos
+namespace BusinessLogic.Dtos.Genres;
+
+public class DInputCreateGenre
 {
-    public class DInputCreateGenre
-    {
-        [Required]
-        public string Name { get; set; } = string.Empty;
-    }
+    [Required] public string Name { get; set; } = string.Empty;
 }

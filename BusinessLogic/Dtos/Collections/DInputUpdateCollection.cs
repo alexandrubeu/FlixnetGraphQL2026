@@ -1,14 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace BusinessLogic.Dtos
+namespace BusinessLogic.Dtos.Collections;
+
+public class DInputUpdateCollection
 {
-    public class DInputUpdateCollection
-    {
-        [Required]
-        public string Name { get; set; } = string.Empty;
+    [Required] public string Name { get; set; } = string.Empty;
 
-        public bool Published { get; set; }
+    public bool Published { get; set; }
 
-        public List<int> MovieIds { get; set; } = new();
-    }
+    public List<int> MovieIds { get; set; } = new();
 }
