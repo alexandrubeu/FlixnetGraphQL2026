@@ -58,3 +58,7 @@ nunit-*.xml
 
 # IDE
 .idea
+
+# appsettings
+Presentation.Api/appsettings.json
+Presentation.Api/appsettings.Development.json
