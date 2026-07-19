@@ -4,7 +4,8 @@ namespace BusinessLogic.Dtos.Collections;
 
 public class DInputCreateCollection
 {
-    [Required] public string Name { get; set; } = string.Empty;
+    [Required]
+    public string Name { get; set; } = string.Empty;
 
     public bool Published { get; set; } = false;
 
