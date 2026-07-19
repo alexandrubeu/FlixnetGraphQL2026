@@ -1,3 +1,8 @@
+using Common.Entities;
+
 namespace Data.Interfaces;
 
-public interface IMovieRepository { }
+public interface IMoviesRepository
+{
+    IEnumerable<EMovie> GetAll();
+}

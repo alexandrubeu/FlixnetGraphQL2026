@@ -10,13 +10,19 @@ namespace Presentation.Api.Controllers;
 public class MoviesController(IMoviesService moviesService) : ControllerBase
 {
     [HttpGet]
-    public ActionResult<Pagination<DMovie>> GetAll(String? term, PaginationParam paginationParam)
+    public ActionResult<Pagination<DMovie>> GetAll(string? term, PaginationParam paginationParam)
     {
         throw new NotImplementedException();
     }
 
     [HttpGet("{id}")]
     public ActionResult<DMovie> GetOne(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    [HttpGet("/genre/{genreId}")]
+    public ActionResult<Pagination<DMovie>> GetByGenre(int genreId)
     {
         throw new NotImplementedException();
     }
