@@ -1,16 +1,15 @@
-﻿namespace WebApi.Queries;
-using WebApi.Application.Dtos.Movie;
-using WebApi.Application.Dtos.Genre;
-using WebApi.Application.Dtos.CastCrew;
-using WebApi.Domain.Entities.Movie;
-using Data;
+﻿using Application.Dtos.CastCrewCredit;
+using Application.Dtos.Genre;
+using Application.Dtos.Movie;
+using Infrastructure.Persistence.Context;
 
+namespace WebApi.Queries;
 [QueryType]
 public static class MoviesQuery
 {
     public static IEnumerable<DOutputMovie> GetMovies(AppDbContext dbContext, string terms)
     {
-        return dbContext.Movie.Select(movie => new DOutputMovie
+        return dbContext.Movies.Select(movie => new DOutputMovie
         {
             Id = movie.Id,
             Title = movie.Title,

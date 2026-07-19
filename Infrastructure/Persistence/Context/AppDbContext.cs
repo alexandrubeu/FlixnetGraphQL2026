@@ -11,13 +11,13 @@ public class AppDbContext(DbContextOptions<AppDbContext> options):DbContext(opti
     public DbSet<Collection> Collections => Set<Collection>();
     public DbSet<Genre> Genres => Set<Genre>();
     public DbSet<Movie> Movies => Set<Movie>();
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-
-        modelBuilder.Entity<>()
-            .HasOne()
-            .WithOne()
-            .HasForeignKey<>();
-    }
+    // protected override void OnModelCreating(ModelBuilder modelBuilder)
+    // {
+    //     base.OnModelCreating(modelBuilder);
+    //
+    //     modelBuilder.Entity<>()
+    //         .HasOne()
+    //         .WithOne()
+    //         .HasForeignKey<>();
+    // }
 }

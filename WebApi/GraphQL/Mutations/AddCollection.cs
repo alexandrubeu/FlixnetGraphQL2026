@@ -1,7 +1,7 @@
-namespace WebApi.Mutation;
-using BusinessLogic.Dtos; 
-using Data;
+using Application.Dtos.Collection;
+using Infrastructure.Persistence.Context;
 
+namespace WebApi.Mutation;
 
 [MutationType]
 public class AddCollection

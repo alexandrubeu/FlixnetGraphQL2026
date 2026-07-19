@@ -1,13 +1,14 @@
-﻿namespace WebApi.Queries;
-using WebApi.Application.Dtos.Genre;
-using Data;
+﻿using Application.Dtos.Genre;
+using Infrastructure.Persistence.Context;
+
+namespace WebApi.Queries;
 
 [QueryType]
 public static class GenreByIdQuery
 {
     public static DOutputGenre GetGenreById(AppDbContext dbContext, int id)
     {
-        var genre = dbContext.Genre.FirstOrDefault(g => g.Id == id);
+        var genre = dbContext.Genres.FirstOrDefault(g => g.Id == id);
         if (genre == null)
         {
             throw new Exception($"Genre with ID {id} not found.");

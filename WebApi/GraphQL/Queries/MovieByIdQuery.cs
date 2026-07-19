@@ -1,15 +1,16 @@
-﻿namespace WebApi.Queries;
-using WebApi.Application.Dtos.Movie;
-using WebApi.Application.Dtos.Genre;
-using WebApi.Application.Dtos.CastCrew;
-using Data;
+﻿using Application.Dtos.CastCrewCredit;
+using Application.Dtos.Genre;
+using Application.Dtos.Movie;
+using Infrastructure.Persistence.Context;
+
+namespace WebApi.Queries;
 
 [QueryType]
 public static class MovieByIdQuery
 {
     public static DOutputMovie GetMovieById(AppDbContext dbContext, int id)
     {
-        var movie = dbContext.Movie.FirstOrDefault(m => m.Id == id);
+        var movie = dbContext.Movies.FirstOrDefault(m => m.Id == id);
         if (movie == null)
         {
             throw new Exception($"Movie with ID {id} not found.");

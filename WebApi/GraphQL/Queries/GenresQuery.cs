@@ -1,13 +1,14 @@
-﻿namespace WebApi.Queries;
-using WebApi.Application.Dtos.Genre;
-using Data;
+﻿using Application.Dtos.Genre;
+using Infrastructure.Persistence.Context;
+
+namespace WebApi.Queries;
 
 [QueryType]
 public static class GenresQuery
 {
     public static IEnumerable<DOutputGenre> GetGenres(AppDbContext dbContext)
     {
-        return dbContext.Genre.Select(genre => new DOutputGenre
+        return dbContext.Genres.Select(genre => new DOutputGenre
         {
             Id = genre.Id,
             Name = genre.Name
