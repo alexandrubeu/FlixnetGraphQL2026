@@ -2,6 +2,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
     </ItemGroup>
 
     <PropertyGroup>
