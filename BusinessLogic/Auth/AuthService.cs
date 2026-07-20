@@ -25,4 +25,22 @@ public class AuthService(
         var (token, expires) = tokenService.GenerateToken(user);
         return new AuthPayload(user.Username, token, expires);
     }
+
+    public async Task<AuthPayload> RegisterAsync(LoginInput registerInput)
+    {
+
+        var existing = await userRepository.GetUserByUsernameAsync(registerInput.Username);
+
+        if (existing)
+            throw new Exception();
+
+        var user = new EUser { Username = registerInput.Username };
+        user.PasswordHash = passwordHasher.HashPassword(user, registerInput.Password);
+
+        await userRepository.CreateUserAsync(user);
+
+        var (token, expires) = tokenService.GenerateToken(user);
+        
+        return new AuthPayload(user.Username, token, expires);
+    }
 }

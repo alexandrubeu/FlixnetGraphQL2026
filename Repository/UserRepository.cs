@@ -12,4 +12,10 @@ public class UserRepository(AppDbContext dbContext) : IUserRepository
                 .ThenInclude(r => r.Permissions)
             .FirstOrDefaultAsync(u => u.Username == username);
     }
+
+    public async Task CreateUserAsync(EUser user)
+    {
+        dbContext.Users.Add(user);
+        await dbContext.SaveChangesAsync();
+    }
 }

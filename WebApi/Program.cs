@@ -6,7 +6,7 @@ using Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-//using WebApi.GraphQL.Services;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Repository;
 using WebApi.GraphQL.Mutations;
@@ -42,13 +42,7 @@ var jwt = new JwtSettings
     ExpiryMinutes = int.Parse(Environment.GetEnvironmentVariable("JWT_EXPIRY_MINUTES") ?? "60"),
 };
 
-builder.Services.Configure<JwtSettings>(options =>
-{
-    options.Key = jwt.Key;
-    options.Issuer = jwt.Issuer;
-    options.Audience = jwt.Audience;
-    options.ExpiryMinutes = jwt.ExpiryMinutes;
-});
+builder.Services.AddSingleton(Options.Create(jwt));
 
 builder
     .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
