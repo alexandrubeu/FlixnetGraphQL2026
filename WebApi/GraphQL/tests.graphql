@@ -1,24 +1,16 @@
 query GetMovies {
-    movies(pagination:  {
-         page: 0
-         perPage: 2
-      })
-      {
-        items{
-          id
-          title
-          imageUrl
-          videoSource
-          trailerUrl
-          published
-          genres {
-              id
-              name
-          }
+        id
+        title
+        imageUrl
+        videoSource
+        trailerUrl
+        published
+        genres {
+            id
+            name
         }
-      }
+    }
 }
-
 
 query GetMovie {
     movie(id: 1) {
@@ -57,19 +49,13 @@ query GetGenre {
 }
 
 query GetCollections {
-    collections(pagination:  {
-       page: 0
-       perPage: 3
-    }) {
-        items{
-          id
-          name
-          published
-             movies {
-               id
-               title
-               imageUrl
-          }
+        id
+        name
+        published
+        movies {
+            id
+            title
+            imageUrl
         }
     }
 }
@@ -86,9 +72,6 @@ query GetCollection {
         }
     }
 }
-
-
-
 
 
 mutation AddGenre {

@@ -1,20 +1,9 @@
-using BusinessLogic;
-using Repository;
-using WebApi.GraphQL.Mutations;
-using WebApi.GraphQL.Queries;
-using WebApi.GraphQL.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("Default")!));
-
-builder.Services.AddScoped<IGenreRepository, GenreRepository>();
-builder.Services.AddScoped<IGenresService, GenresService>();
-
 builder.Services.AddSingleton<IMoviesService, MoviesService>();
-
+builder.Services.AddSingleton<IGenresService, GenresService>();
 builder.Services.AddSingleton<ICollectionsService, CollectionsService>();
 
 builder.Services
@@ -27,7 +16,5 @@ builder.Services
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-
 app.MapGraphQL();
-
 app.Run();
