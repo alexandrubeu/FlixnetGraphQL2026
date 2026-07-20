@@ -2,4 +2,5 @@
   <Project Path="BusinessLogic/BusinessLogic.csproj" />
   <Project Path="Entities/Entities.csproj" />
   <Project Path="Repository/Repository.csproj" />
+  <Project Path="WebApi/WebApi.csproj" />
 </Solution>
