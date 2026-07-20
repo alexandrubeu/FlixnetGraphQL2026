@@ -1,9 +1,8 @@
-using HotChocolate;
 using Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 
-namespace WebApi.Mutation;
+namespace WebApi.GraphQL.Mutations.Collection;
 
 [MutationType]
 public class DeleteCollection

@@ -1,35 +1,28 @@
 using Application.Dtos.Collection;
 using AutoMapper;
 using Domain.Entities.Movie;
-using HotChocolate;
 using Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using KeyNotFoundException = System.Collections.Generic.KeyNotFoundException;
 
-namespace WebApi.Mutation;
+namespace WebApi.GraphQL.Mutations.Collection;
 
 [MutationType]
-public class UpdataCollection
+public class AddCollection
 {
-    public async Task<DOutputCollection> UpdateCollectionAsync(
-        int id,
-        DInputUpdateCollection input,
+    public async Task<DOutputCollection> AddCollectionAsync(
+        DInputCreateCollection collection,
         [Service] AppDbContext context,
         [Service] IMapper mapper,
         CancellationToken ct)
     {
-        var collection = await context.Collections.FirstOrDefaultAsync(item => item.Id == id, ct);
-        if (collection == null)
-        {
-            throw new KeyNotFoundException($"Collection with ID {id} not found.");
-        }
+        var entity = mapper.Map<Domain.Entities.Collection.Collection>(collection);
+        entity.Movies = await LoadMovieSummariesAsync(context, collection.MovieIds, ct);
 
-        mapper.Map(input, collection);
-        collection.Movies = await LoadMovieSummariesAsync(context, input.MovieIds, ct);
-
+        context.Collections.Add(entity);
         await context.SaveChangesAsync(ct);
 
-        return mapper.Map<DOutputCollection>(collection);
+        return mapper.Map<DOutputCollection>(entity);
     }
 
     private static async Task<List<MovieSummary>> LoadMovieSummariesAsync(

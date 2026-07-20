@@ -4,7 +4,7 @@ using Domain.Entities.Collection;
 
 namespace Application.MappingProfiles;
 
-public class CollectionProfile : Profile
+public class  CollectionProfile : Profile
 {
     public CollectionProfile()
     {

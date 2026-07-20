@@ -1,7 +1,8 @@
 using Application.MappingProfiles;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Mutation;
+using WebApi.GraphQL.Mutations;
+using WebApi.GraphQL.Mutations.Collection;
 
 var builder = WebApplication.CreateBuilder(args);
 

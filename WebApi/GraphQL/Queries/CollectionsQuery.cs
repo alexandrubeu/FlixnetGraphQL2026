@@ -1,7 +1,7 @@
 ﻿using Application.Dtos.Collection;
 using Infrastructure.Persistence.Context;
 
-namespace WebApi.Queries;
+namespace WebApi.GraphQL.Queries;
 [QueryType]
 public static class CollectionsQuery
 {
