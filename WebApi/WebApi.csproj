@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="16.5.1-p.2" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="16.5.1-p.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="GraphQL\Mutations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>
