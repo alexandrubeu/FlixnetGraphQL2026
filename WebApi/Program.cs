@@ -1,4 +1,5 @@
 using BusinessLogic;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using Repository;
@@ -25,10 +26,11 @@ builder.Services
     .AddFiltering()
     .AddSorting();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
-
+app.UseAuthorization();
 app.MapGraphQL();
-
 app.Run();
