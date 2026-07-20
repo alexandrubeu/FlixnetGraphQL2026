@@ -31,7 +31,7 @@ public class AuthService(
 
         var existing = await userRepository.GetUserByUsernameAsync(registerInput.Username);
 
-        if (existing)
+        if (existing is not null)
             throw new Exception();
 
         var user = new EUser { Username = registerInput.Username };
