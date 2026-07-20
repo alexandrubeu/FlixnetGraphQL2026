@@ -2,7 +2,9 @@ using System.Text;
 using BusinessLogic;
 using BusinessLogic.Auth;
 using DotNetEnv;
+using Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 //using WebApi.GraphQL.Services;
 using Microsoft.IdentityModel.Tokens;
@@ -22,8 +24,6 @@ builder.Services.AddScoped<IGenresService, GenresService>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IMoviesService, MoviesService>();
 
-//builder.Services.AddSingleton<ICollectionsService, CollectionsService>();
-
 builder
     .Services.AddGraphQLServer()
     .AddQueryType<Query>()
@@ -37,13 +37,11 @@ var jwt = new JwtSettings
     Key =
         Environment.GetEnvironmentVariable("JWT_SECRET")
         ?? throw new Exception("JWT_SECRET missing"),
-
     Issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "MovieAPI",
-
     Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "MovieAPI-Client",
-
     ExpiryMinutes = int.Parse(Environment.GetEnvironmentVariable("JWT_EXPIRY_MINUTES") ?? "60"),
 };
+
 builder.Services.Configure<JwtSettings>(options =>
 {
     options.Key = jwt.Key;
@@ -67,10 +65,21 @@ builder
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key)),
         };
     });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("CanCreateMovies", p => p.RequireClaim("permission", "movie:create"));
+    //TODO: add remaining policies after discussion
+});
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPasswordHasher<EUser>, PasswordHasher<EUser>>();
 
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapGraphQL();
 app.Run();
