@@ -2,6 +2,14 @@ namespace BusinessLogic.Dtos
 {
     public class DMovie
     {
+        public DMovie(int id, string? trailerUrl, bool published, List<DGenre>  genres)
+        {
+            Id = id;
+            TrailerUrl = trailerUrl;
+            Published = published;
+            Genres = genres;
+        }
+
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
