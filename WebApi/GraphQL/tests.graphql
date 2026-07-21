@@ -1,32 +1,25 @@
-########################################
-# QUERIES
-########################################
-
-# Get all movies
 query GetMovies {
-    movies {
-        id
-        title
-        imageUrl
-        videoSource
-        trailerUrl
-        published
-    }
-}
-
-# Get all movies with genres
-query GetMoviesWithGenres {
-    movies {
-        id
-        title
-        genres {
-            id
-            name
+    movies(pagination:  {
+         page: 0
+         perPage: 2
+      })
+      {
+        items{
+          id
+          title
+          imageUrl
+          videoSource
+          trailerUrl
+          published
+          genres {
+              id
+              name
+          }
         }
-    }
+      }
 }
 
-# Get one movie
+
 query GetMovie {
     movie(id: 1) {
         id
@@ -38,7 +31,6 @@ query GetMovie {
     }
 }
 
-# Get one movie with genres
 query GetMovieWithGenres {
     movie(id: 1) {
         id
@@ -50,7 +42,6 @@ query GetMovieWithGenres {
     }
 }
 
-# Get all genres
 query GetGenres {
     genres {
         id
@@ -58,7 +49,6 @@ query GetGenres {
     }
 }
 
-# Get one genre
 query GetGenre {
     genre(id: 1) {
         id
@@ -66,30 +56,24 @@ query GetGenre {
     }
 }
 
-# Get all collections
 query GetCollections {
-    collections {
-        id
-        name
-        published
-    }
-}
-
-# Get all collections with movies
-query GetCollectionsWithMovies {
-    collections {
-        id
-        name
-        published
-        movies {
-            id
-            title
-            imageUrl
+    collections(pagination:  {
+       page: 0
+       perPage: 3
+    }) {
+        items{
+          id
+          name
+          published
+             movies {
+               id
+               title
+               imageUrl
+          }
         }
     }
 }
 
-# Get one collection
 query GetCollection {
     collection(id: 1) {
         id
@@ -103,9 +87,9 @@ query GetCollection {
     }
 }
 
-########################################
-# MUTATIONS - GENRES
-########################################
+
+
+
 
 mutation AddGenre {
     addGenre(
@@ -133,10 +117,6 @@ mutation UpdateGenre {
 mutation DeleteGenre {
     deleteGenre(id: 1)
 }
-
-########################################
-# MUTATIONS - MOVIES
-########################################
 
 mutation AddMovie {
     addMovie(
@@ -186,10 +166,6 @@ mutation UpdateMovie {
 mutation DeleteMovie {
     deleteMovie(id: 1)
 }
-
-########################################
-# MUTATIONS - COLLECTIONS
-########################################
 
 mutation AddCollection {
     addCollection(
