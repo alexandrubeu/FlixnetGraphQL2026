@@ -50,6 +50,7 @@ query GetMovies {
       }
 }
 
+
 query GetMovie {
     movie(id: 1) {
         id
@@ -100,7 +101,6 @@ query GetCollections {
                title
                imageUrl
           }
-
         }
     }
 }

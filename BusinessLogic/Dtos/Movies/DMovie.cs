@@ -17,7 +17,7 @@ namespace BusinessLogic.Dtos
         public string VideoSource { get; set; } = string.Empty;
         public string? TrailerUrl { get; set; }
         public bool Published { get; set; }
-        
+
         public DateTime CreatedAt { get; set; }
         public List<DGenre> Genres { get; set; } = new();
         public List<DCastCrewCredit> CastAndCrew { get; set; } = new();
