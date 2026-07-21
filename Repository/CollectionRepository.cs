@@ -20,6 +20,8 @@ namespace Repository
 
         public void Add(ECollection collection)
         {
+            foreach (var movie in collection.Movies)
+                _context.Attach(movie);
             _context.Collections.Add(collection);
             _context.SaveChanges();
         }
@@ -37,7 +39,10 @@ namespace Repository
 
             existing.Movies.Clear();
             foreach (var movie in collection.Movies)
+            {
+                _context.Attach(movie);
                 existing.Movies.Add(movie);
+            }
 
             _context.SaveChanges();
         }
