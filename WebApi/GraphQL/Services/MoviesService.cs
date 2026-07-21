@@ -46,13 +46,17 @@ public class MoviesService : IMoviesService
             ? Db.Movies.Max(m => m.Id) + 1
             : 1;
 
+        var createdAt = DateTime.UtcNow;
+        var genres = Db.Genres
+            .Where(g => input.GenreIds.Contains(g.Id))
+            .ToList();
+
         var movie = new DMovie(
             nextId,
             input.TrailerUrl,
             input.Published,
-            Db.Genres
-                .Where(g => input.GenreIds.Contains(g.Id))
-                .ToList())
+            createdAt,
+            genres)
         {
             Title = input.Title,
             ImageUrl = input.ImageUrl,
