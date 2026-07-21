@@ -1,15 +1,22 @@
 query GetMovies {
-        id
-        title
-        imageUrl
-        videoSource
-        trailerUrl
-        published
-        genres {
-            id
-            name
+    movies(pagination:  {
+         page: 0
+         perPage: 2
+      })
+      {
+        items{
+          id
+          title
+          imageUrl
+          videoSource
+          trailerUrl
+          published
+          genres {
+              id
+              name
+          }
         }
-    }
+      }
 }
 
 query GetMovie {
@@ -49,13 +56,20 @@ query GetGenre {
 }
 
 query GetCollections {
-        id
-        name
-        published
-        movies {
-            id
-            title
-            imageUrl
+    collections(pagination:  {
+       page: 0
+       perPage: 3
+    }) {
+        items{
+          id
+          name
+          published
+             movies {
+               id
+               title
+               imageUrl
+          }
+
         }
     }
 }
