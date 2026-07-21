@@ -11,16 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2f79844-1202-4d23-bbac-6585b2fdcae4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/ICollectionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/IGenreRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/IMovieRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/Repository.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/entities-for-dtos.patch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlixnetGraphQL2026.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/FlixnetGraphQL2026.slnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,40 +19,55 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="4" />
+    <option name="cachedIndexableFilesCount" value="14" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:alexandrubeu/FlixnetGraphQL2026.git",
-    "accountId": "39e4715c-a251-435b-8f51-4fe41c6187e1"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;assignee&quot;: &quot;Dacoginu&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;assignee&quot;: &quot;Dacoginu&quot;
   }
-}]]></component>
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:alexandrubeu/FlixnetGraphQL2026.git&quot;,
+    &quot;accountId&quot;: &quot;39e4715c-a251-435b-8f51-4fe41c6187e1&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Repository/CollectionRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Repository/GenreRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Repository/MovieRepository.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0" />
-      <entry key="M15" value="1.0" />
-      <entry key="M30" value="1.0" />
-      <entry key="H1" value="1.0" />
-      <entry key="H2" value="1.0" />
-      <entry key="H4" value="1.0" />
-      <entry key="D1" value="1.0" />
-      <entry key="W1" value="1.0" />
+      <entry key="MS100" value="1.6954719110847467" />
+      <entry key="MS500" value="3.881202335414019" />
+      <entry key="S2" value="6.281852918062379" />
+      <entry key="S5" value="9.672608631744408" />
+      <entry key="S10" value="14.035629986933182" />
+      <entry key="S30" value="21.22186901950802" />
+      <entry key="S60" value="24.219810684957764" />
+      <entry key="M2" value="25.9987451784414" />
+      <entry key="M5" value="27.17088186583494" />
+      <entry key="M10" value="27.5804996362843" />
+      <entry key="M15" value="27.71922189650807" />
+      <entry key="M30" value="27.85912228078617" />
+      <entry key="H1" value="27.978004519885673" />
+      <entry key="H2" value="29.248809847321834" />
+      <entry key="H4" value="34.588057639239445" />
+      <entry key="D1" value="53.871366299305244" />
+      <entry key="W1" value="60.69855895375862" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -83,23 +89,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.5987393523094643" />
-      <entry key="MS500" value="0.90250072746243" />
-      <entry key="S2" value="0.9746796308915489" />
-      <entry key="S5" value="0.9897938614695402" />
-      <entry key="S10" value="0.9948838432045924" />
-      <entry key="S30" value="0.9982916977667883" />
-      <entry key="S60" value="0.9991454837844128" />
-      <entry key="M2" value="0.9995726505784424" />
-      <entry key="M5" value="0.9998290383110773" />
-      <entry key="M10" value="0.9999145155017389" />
-      <entry key="M15" value="0.9999430095225063" />
-      <entry key="M30" value="0.9999715043552523" />
-      <entry key="H1" value="0.9999857520761245" />
-      <entry key="H2" value="0.9999928760126866" />
-      <entry key="H4" value="0.9999964379999994" />
-      <entry key="D1" value="0.9999994063324521" />
-      <entry key="W1" value="0.9999999151903287" />
+      <entry key="MS100" value="1.6257739784303786" />
+      <entry key="MS500" value="3.777376925753296" />
+      <entry key="S2" value="6.237332276454718" />
+      <entry key="S5" value="9.630756151860522" />
+      <entry key="S10" value="13.982045170930943" />
+      <entry key="S30" value="21.18109813794561" />
+      <entry key="S60" value="24.19434411840195" />
+      <entry key="M2" value="25.98448715441584" />
+      <entry key="M5" value="27.16477496050232" />
+      <entry key="M10" value="27.577375511412864" />
+      <entry key="M15" value="27.717123181389134" />
+      <entry key="M30" value="27.858064874240057" />
+      <entry key="H1" value="27.97747364530904" />
+      <entry key="H2" value="29.248541999118927" />
+      <entry key="H4" value="34.58791944771246" />
+      <entry key="D1" value="53.87134073290409" />
+      <entry key="W1" value="60.6985551732266" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -142,7 +148,8 @@
       <updated>1784297580455</updated>
       <workItem from="1784297584426" duration="6097000" />
       <workItem from="1784528296122" duration="504000" />
-      <workItem from="1784528818806" duration="1520000" />
+      <workItem from="1784528818806" duration="14173000" />
+      <workItem from="1784619103771" duration="4056000" />
     </task>
     <servers />
   </component>
