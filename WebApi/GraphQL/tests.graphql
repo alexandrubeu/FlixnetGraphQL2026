@@ -1,0 +1,209 @@
+query GetMovies {
+    movies(pagination:  {
+         page: 0
+         perPage: 2
+      })
+      {
+        items{
+          id
+          title
+          imageUrl
+          videoSource
+          trailerUrl
+          published
+          genres {
+              id
+              name
+          }
+        }
+      }
+}
+
+
+query GetMovie {
+    movie(id: 1) {
+        id
+        title
+        imageUrl
+        videoSource
+        trailerUrl
+        published
+    }
+}
+
+query GetMovieWithGenres {
+    movie(id: 1) {
+        id
+        title
+        genres {
+            id
+            name
+        }
+    }
+}
+
+query GetGenres {
+    genres {
+        id
+        name
+    }
+}
+
+query GetGenre {
+    genre(id: 1) {
+        id
+        name
+    }
+}
+
+query GetCollections {
+    collections(pagination:  {
+       page: 0
+       perPage: 3
+    }) {
+        items{
+          id
+          name
+          published
+             movies {
+               id
+               title
+               imageUrl
+          }
+        }
+    }
+}
+
+query GetCollection {
+    collection(id: 1) {
+        id
+        name
+        published
+        movies {
+            id
+            title
+            imageUrl
+        }
+    }
+}
+
+
+
+
+
+mutation AddGenre {
+    addGenre(
+        input: {
+            name: "Science Fiction"
+        }
+    ) {
+        id
+        name
+    }
+}
+
+mutation UpdateGenre {
+    updateGenre(
+        id: 1
+        input: {
+            name: "Sci-Fi"
+        }
+    ) {
+        id
+        name
+    }
+}
+
+mutation DeleteGenre {
+    deleteGenre(id: 1)
+}
+
+mutation AddMovie {
+    addMovie(
+        input: {
+            title: "Interstellar"
+            imageUrl: "/images/interstellar.jpg"
+            videoSource: "/videos/interstellar.mp4"
+            trailerUrl: "https://youtu.be/zSWdZVtXT7E"
+            published: true
+            genreIds: [1, 3]
+            castAndCrew: []
+        }
+    ) {
+        id
+        title
+        published
+        genres {
+            id
+            name
+        }
+    }
+}
+
+mutation UpdateMovie {
+    updateMovie(
+        id: 1
+        input: {
+            title: "Interstellar (Remastered)"
+            imageUrl: "/images/interstellar-new.jpg"
+            videoSource: "/videos/interstellar.mp4"
+            trailerUrl: "https://youtu.be/zSWdZVtXT7E"
+            published: false
+            genreIds: [2]
+            castAndCrew: []
+        }
+    ) {
+        id
+        title
+        published
+        genres {
+            id
+            name
+        }
+    }
+}
+
+mutation DeleteMovie {
+    deleteMovie(id: 1)
+}
+
+mutation AddCollection {
+    addCollection(
+        input: {
+            name: "Top Picks"
+            published: true
+            movieIds: [1, 2]
+        }
+    ) {
+        id
+        name
+        published
+        movies {
+            id
+            title
+        }
+    }
+}
+
+mutation UpdateCollection {
+    updateCollection(
+        id: 1
+        input: {
+            name: "Summer Favorites"
+            published: true
+            movieIds: [2, 3]
+        }
+    ) {
+        id
+        name
+        published
+        movies {
+            id
+            title
+        }
+    }
+}
+
+mutation DeleteCollection {
+    deleteCollection(id: 1)
+}
