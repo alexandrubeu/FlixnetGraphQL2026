@@ -1,13 +1,13 @@
 using Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext(DbContextOptions<AppDbContext> options)
+        : IdentityDbContext<EUser, IdentityRole<int>, int>(options)
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base(options) { }
-
         public DbSet<EMovie> Movies { get; set; }
         public DbSet<EGenre> Genres { get; set; }
         public DbSet<ECollection> Collections { get; set; }
@@ -24,6 +24,13 @@ namespace Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); // resolves the bug with user primary key
+
+            modelBuilder.Ignore<IdentityUserPasskey<int>>(); // resolves the bug when creating a migration
+            // passkeys not compatible withMYSQL probably
+            // ^ is (probably) related to builder.services.AddIdentityCore
+            // instead of AddIdentity
+            //  it's the more lightweight option, with no extra auth options
             modelBuilder.Entity<EMovie>().ToTable("Movies");
             modelBuilder.Entity<EGenre>().ToTable("Genres");
             modelBuilder.Entity<ECollection>().ToTable("Collections");

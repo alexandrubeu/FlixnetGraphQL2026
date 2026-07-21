@@ -28,6 +28,8 @@ builder
     .Services.AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutations>()
+    .AddTypeExtension<AuthMutation>()
+    .AddAuthorization()
     .AddFiltering()
     .AddSorting();
 
@@ -38,7 +40,7 @@ var jwt = new JwtSettings
         Environment.GetEnvironmentVariable("JWT_SECRET")
         ?? throw new Exception("JWT_SECRET missing"),
     Issuer = Environment.GetEnvironmentVariable("JWT_ISSUER") ?? "MovieAPI",
-    Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "MovieAPI-Client",
+    Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE") ?? "MovieAPI",
     ExpiryMinutes = int.Parse(Environment.GetEnvironmentVariable("JWT_EXPIRY_MINUTES") ?? "60"),
 };
 
@@ -59,19 +61,36 @@ builder
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key)),
         };
     });
+
+// Generate Policies based on permissions from /Auth/Permissions.cs
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("CanCreateMovies", p => p.RequireClaim("permission", "movie:create"));
-    //TODO: add remaining policies after discussion
+    foreach (var permission in Permissions.All)
+    {
+        options.AddPolicy(permission, policy => policy.RequireClaim("permission", permission));
+    }
 });
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder
+    .Services.AddIdentityCore<EUser>(options =>
+    {
+        //sample password requirements
+        options.Password.RequireDigit = true;
+        options.Password.RequireLowercase = true;
+        options.Password.RequireNonAlphanumeric = true;
+        options.Password.RequireUppercase = true;
+        options.Password.RequiredLength = 10;
+    })
+    .AddRoles<IdentityRole<int>>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IPasswordHasher<EUser>, PasswordHasher<EUser>>();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+    await RolePermissionSeeder.SeedRolePermissionsAsync(scope.ServiceProvider);
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

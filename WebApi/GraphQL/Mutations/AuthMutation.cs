@@ -2,10 +2,10 @@ using BusinessLogic.Auth;
 
 namespace WebApi.GraphQL.Mutations;
 
-[MutationType]
-public static class AuthMutation
+[ExtendObjectType(typeof(Mutations))]
+public class AuthMutation
 {
-    public static Task<AuthPayload> Login(IAuthService authService, LoginInput input)
+    public Task<AuthPayload> Login(IAuthService authService, LoginInput input)
     {
         return authService.LoginAsync(input);
     }
@@ -19,7 +19,7 @@ public static class AuthMutation
     // }
     // }
 
-    public static Task<AuthPayload> Register(IAuthService authService, LoginInput input)
+    public Task<AuthPayload> Register(IAuthService authService, LoginInput input)
     {
         return authService.RegisterAsync(input);
     }

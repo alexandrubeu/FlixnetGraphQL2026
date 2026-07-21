@@ -4,5 +4,5 @@ namespace BusinessLogic.Auth;
 
 public interface ITokenService
 {
-    (string Token, DateTime Expires) GenerateToken(EUser user);
+    Task<(string Token, DateTime Expires)> GenerateTokenAsync(EUser user);
 }

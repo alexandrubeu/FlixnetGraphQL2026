@@ -6,16 +6,16 @@ namespace Repository
     public class MovieRepository : IMovieRepository
     {
         private readonly AppDbContext _context;
+
         public MovieRepository(AppDbContext context) => _context = context;
 
-        public IEnumerable<EMovie> GetAll() => _context.Movies
-            .Include(m => m.Genres)
-            .ToList();
+        public IEnumerable<EMovie> GetAll() => _context.Movies.Include(m => m.Genres).ToList();
 
-        public EMovie? GetById(int id) => _context.Movies
-            .Include(m => m.Genres)
-            .Include(m => m.CastAndCrew)
-            .FirstOrDefault(m => m.Id == id);
+        public EMovie? GetById(int id) =>
+            _context
+                .Movies.Include(m => m.Genres)
+                .Include(m => m.CastAndCrew)
+                .FirstOrDefault(m => m.Id == id);
 
         public void Add(EMovie movie)
         {
@@ -26,12 +26,13 @@ namespace Repository
 
         public void Update(EMovie movie)
         {
-            var existing = _context.Movies
-                .Include(m => m.Genres)
+            var existing = _context
+                .Movies.Include(m => m.Genres)
                 .Include(m => m.CastAndCrew)
                 .FirstOrDefault(m => m.Id == movie.Id);
 
-            if (existing is null) return;
+            if (existing is null)
+                return;
 
             _context.Entry(existing).CurrentValues.SetValues(movie);
 
@@ -48,7 +49,8 @@ namespace Repository
         public void Delete(int id)
         {
             var existing = _context.Movies.Find(id);
-            if (existing is null) return;
+            if (existing is null)
+                return;
 
             _context.Movies.Remove(existing);
             _context.SaveChanges();

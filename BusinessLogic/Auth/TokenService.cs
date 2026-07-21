@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,23 +16,31 @@ public class JwtSettings
     public int ExpiryMinutes { get; set; }
 }
 
-public class TokenService(IOptions<JwtSettings> options) : ITokenService
+public class TokenService(
+    IOptions<JwtSettings> options,
+    UserManager<EUser> userManager,
+    RoleManager<IdentityRole<int>> roleManager
+) : ITokenService
 {
     private readonly JwtSettings _settings = options.Value;
 
-    public (string Token, DateTime Expires) GenerateToken(EUser user)
+    public async Task<(string Token, DateTime Expires)> GenerateTokenAsync(EUser user)
     {
         var claims = new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new(ClaimTypes.Name, user.Username),
+            new(ClaimTypes.Name, user.UserName!),
         };
-        foreach (var role in user.Roles)
+        var roles = await userManager.GetRolesAsync(user);
+        foreach (var roleName in roles)
         {
-            claims.Add(new Claim(ClaimTypes.Role, role.Name));
-            claims.AddRange(
-                role.Permissions.Select(permission => new Claim("permission", permission.Name))
-            );
+            claims.Add(new Claim(ClaimTypes.Role, roleName));
+            var role = await roleManager.FindByNameAsync(roleName);
+            if (role is not null)
+            {
+                var roleClaims = await roleManager.GetClaimsAsync(role);
+                claims.AddRange(roleClaims.Where(claim => claim.Type == "permission"));
+            }
         }
 
         var expires = DateTime.UtcNow.AddMinutes(_settings.ExpiryMinutes);
