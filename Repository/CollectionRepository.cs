@@ -20,7 +20,6 @@ namespace Repository
 
         public void Add(ECollection collection)
         {
-            collection.Movies = ResolveExistingMovies(collection.Movies);
             _context.Collections.Add(collection);
             _context.SaveChanges();
         }
@@ -37,7 +36,7 @@ namespace Repository
             existing.Published = collection.Published;
 
             existing.Movies.Clear();
-            foreach (var movie in ResolveExistingMovies(collection.Movies))
+            foreach (var movie in collection.Movies)
                 existing.Movies.Add(movie);
 
             _context.SaveChanges();
@@ -51,12 +50,5 @@ namespace Repository
             _context.Collections.Remove(existing);
             _context.SaveChanges();
         }
-
-        private List<EMovie> ResolveExistingMovies(IEnumerable<EMovie> movieStubs) =>
-            movieStubs
-                .Select(stub => _context.Movies.Find(stub.Id))
-                .Where(m => m != null)
-                .Cast<EMovie>()
-                .ToList();
     }
 }
