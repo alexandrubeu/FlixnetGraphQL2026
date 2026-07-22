@@ -44,10 +44,9 @@ namespace BusinessLogic
             return true;
         }
 
-        private static DGenre MapToDto(EGenre genre) => new()
-        {
-            Id = genre.Id,
-            Name = genre.Name
-        };
+        public DGenre MapToDto(EGenre genre) => new(
+            genre.Id,
+            genre.Name
+        );
     }
 }

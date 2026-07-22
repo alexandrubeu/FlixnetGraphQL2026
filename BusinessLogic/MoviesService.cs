@@ -95,7 +95,7 @@ public class MoviesService : IMoviesService
         VideoSource = movie.VideoSource,
         TrailerUrl = movie.TrailerUrl,
         Published = movie.Published,
-        Genres = movie.Genres.Select(g => new DGenre { Id = g.Id, Name = g.Name }).ToList(),
+        Genres = movie.Genres.Select(g => new DGenre (g.Id, g.Name )).ToList(),
         CastAndCrew = movie.CastAndCrew.Select(c => new DCastCrewCredit
         {
             Id = c.Id,
