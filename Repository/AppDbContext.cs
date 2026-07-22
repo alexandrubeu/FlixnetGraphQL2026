@@ -12,6 +12,11 @@ namespace Repository
         public DbSet<ECollection> Collections { get; set; }
         public DbSet<ECastCrewCredit> CastCrewCredits { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder.UseMySQL("server=localhost;port=3306;database=flixnet;user=root;password=7410;"));
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EMovie>().ToTable("Movies");

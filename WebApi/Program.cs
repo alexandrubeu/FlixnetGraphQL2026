@@ -13,8 +13,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IGenresService, GenresService>();
-
-builder.Services.AddSingleton<IMoviesService, MoviesService>();
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IMoviesService, MoviesService>();
 
 //builder.Services.AddSingleton<ICollectionsService, CollectionsService>();
 
