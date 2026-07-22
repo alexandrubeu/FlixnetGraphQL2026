@@ -1,3 +1,34 @@
+mutation AddMovie {
+    addMovie(
+        input: {
+            title: "Interstellar"
+            imageUrl: "/images/interstellar.jpg"
+            videoSource: "/videos/interstellar.mp4"
+            trailerUrl: "https://youtu.be/zSWdZVtXT7E"
+            published: true
+            genreIds: [1]
+            castAndCrew: [{
+                name: "Alex Stamate"
+                role: "Antagonist"
+                stageName: "Alex Barnu"
+            }]
+        }
+    ) {
+        id
+        title
+        published
+        genres {
+            id
+            name
+        }
+        castAndCrew{
+            name
+            role
+            stageName
+        }
+    }
+}
+
 query GetMovies {
     movies(pagination:  {
          page: 0
@@ -18,7 +49,6 @@ query GetMovies {
         }
       }
 }
-
 
 query GetMovie {
     movie(id: 1) {
@@ -70,6 +100,7 @@ query GetCollections {
                title
                imageUrl
           }
+
         }
     }
 }
@@ -86,9 +117,6 @@ query GetCollection {
         }
     }
 }
-
-
-
 
 
 mutation AddGenre {

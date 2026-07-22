@@ -1,5 +1,6 @@
 using BusinessLogic;
 using BusinessLogic.Dtos;
+using WebApi.GraphQL.Services;
 
 namespace WebApi.GraphQL.Queries;
 
@@ -15,6 +16,12 @@ public class Query
         int id,
         [Service] IMoviesService moviesService)
         => moviesService.GetById(id);
+    
+    public Task<PagedResult<DMovie>> GetMoviesWithCursor(
+        int pageSize, 
+        string? afterCursor,
+        [Service] IMovieServiceWithCursor movieServiceWithCurosr)
+        => movieServiceWithCurosr.GetMoviesAsync(pageSize, afterCursor);
     
     public IEnumerable<DGenre> GetGenres(
         [Service] IGenresService genresService) 

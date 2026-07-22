@@ -7,6 +7,7 @@ namespace Entities
         public string ImageUrl { get; set; } = string.Empty;
         public string VideoSource { get; set; } = string.Empty;
         public bool Published { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public ICollection<EGenre> Genres { get; set; } = new List<EGenre>();
         public ICollection<ECastCrewCredit> CastAndCrew { get; set; } = new List<ECastCrewCredit>();
