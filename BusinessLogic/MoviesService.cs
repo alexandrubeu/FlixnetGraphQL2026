@@ -4,6 +4,11 @@ using Repository;
 
 namespace BusinessLogic;
 
+public enum MovieSortBy
+{
+    Title,
+    Published
+}
 public class MoviesService : IMoviesService
 {
     private readonly IMovieRepository _movieRepository;
@@ -16,15 +21,65 @@ public class MoviesService : IMoviesService
         return movie is null ? null : MapToDto(movie);
     }
 
-    public Pagination<DMovieSummary> GetAll(string? term, PaginationParam paginationParam)
+    public Pagination<DMovieSummary> GetAll(
+        List<string>? genres,
+        string? term,
+        bool? published,
+        MovieSortBy? sortBy,
+        bool ascending,
+        PaginationParam paginationParam)
     {
         var query = _movieRepository.GetAll();
         
         if (!string.IsNullOrWhiteSpace(term))
         {
-            query = query.Where(m => 
-                m.Title.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList();
+            query = query.Where(m => m.Title.Contains(term));
         }
+
+        if (published.HasValue)
+        {
+            query = query.Where(m => m.Published == published.Value);
+        }
+
+        if (genres is not null && genres.Count > 0)
+        {
+            /// <summary>
+            /// aici as fi scris : query = query.Where(m => m.Genres.Any(g => genres.Contains(g.Name)));
+            /// doar ca aparent pachetul mysql adaugat nu poate
+            /// traduce bine in sql si am gasit o solutie manuala
+            /// ca sa pot pastra tipul de date la IQueryable
+            /// </summary>
+            
+            // creez empty query unde pt fiecare genre se modifica
+            var filtered = query.Where(m => false);
+
+            foreach (var genre in genres)
+            {
+                var currentGenre = genre;
+                
+                // folosesc union pentru a elimina duplicatele
+                // in cazul in care un film are mai multe genuri sa nu fie adaugat de mai multe ori
+                filtered = filtered.Union(
+                    query.Where(m => m.Genres.Any(g => g.Name == currentGenre)));
+            }
+
+            query = filtered;
+        }
+
+        switch (sortBy)
+        {
+            case MovieSortBy.Title:
+                query = ascending
+                    ? query.OrderBy(m => m.Title)
+                    : query.OrderByDescending(m => m.Title);
+                break;
+            case MovieSortBy.Published:
+                query = ascending
+                    ? query.OrderBy(m => m.Published)
+                    : query.OrderByDescending(m => m.Published);
+                break;
+        }
+        
         var total = query.Count();
         
         var items = query

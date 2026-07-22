@@ -8,9 +8,8 @@ namespace Repository
         private readonly AppDbContext _context;
         public MovieRepository(AppDbContext context) => _context = context;
 
-        public IEnumerable<EMovie> GetAll() => _context.Movies
-            .Include(m => m.Genres)
-            .ToList();
+        public IQueryable<EMovie> GetAll() => _context.Movies
+            .Include(m => m.Genres);
 
         public EMovie? GetById(int id) => _context.Movies
             .Include(m => m.Genres)
