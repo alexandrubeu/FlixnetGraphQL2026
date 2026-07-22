@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApi.GraphQL.Services;
 
-public class MovieServiceWithCursor(AppDbContext context,GenresService genresService) : IMovieServiceWithCursor
+public class MovieServiceWithCursor(AppDbContext context, GenresService genresService) : IMovieServiceWithCursor
 {
     private readonly AppDbContext _context = context;
     private readonly GenresService _genresService = genresService;
@@ -27,11 +27,11 @@ public class MovieServiceWithCursor(AppDbContext context,GenresService genresSer
         }
 
         query = query.OrderByDescending(movie => movie.CreatedAt).ThenByDescending(movie => movie.Id);
-        
+
         var movies = query.Take(pageSize + 1).ToList();
         var hasNextPage = movies.Count > pageSize;
         var actualMovies = movies.Take(pageSize).ToList();
-        
+
         var dMovies = actualMovies.Select(movie =>
         {
             var genres = movie.Genres.Select(g => _genresService.MapToDto(g)).ToList();
@@ -59,5 +59,5 @@ public class MovieServiceWithCursor(AppDbContext context,GenresService genresSer
 
         return Task.FromResult(result);
     }
-    
+
 }

@@ -16,7 +16,7 @@ public class CursorEncoder
             return null;
         }
         var bytes = Convert.FromBase64String(cursor);
-        var decoded= System.Text.Encoding.UTF8.GetString(bytes);
+        var decoded = System.Text.Encoding.UTF8.GetString(bytes);
         var parts = decoded.Split('_');
         if (parts.Length == 2 &&
             DateTime.TryParse(parts[0], out var date) &&

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Repository;
+using WebApi.Auth;
 using WebApi.GraphQL.Mutations;
 using WebApi.GraphQL.Queries;
 
