@@ -8,10 +8,39 @@ namespace BusinessLogic
     {
         private readonly IGenreRepository _genreRepository;
 
-        public GenresService(IGenreRepository genreRepository) =>
+        public GenresService(IGenreRepository genreRepository)
+        {
             _genreRepository = genreRepository;
+        }
+        
+        public IEnumerable<DGenre> GetAll(
+            string? name,
+            bool ascending)
+        {
+            var query = _genreRepository.GetAll();
 
-        public IEnumerable<DGenre> GetAll() => _genreRepository.GetAll().Select(MapToDto);
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.Where(g =>
+                    g.Name.Contains(name));
+            }
+
+            query = ascending
+                ? query.OrderBy(g => g.Name)
+                : query.OrderByDescending(g => g.Name);
+
+            return query
+                .Select(g => new DGenre(
+                    g.Id,
+                    g.Name
+                ))
+                .ToList();
+        }
+
+        //public IEnumerable<DGenre> GetAll() => _genreRepository.GetAll().Select(MapToDto);
+        
+        // public IQueryable<DGenre> GetAll() =>
+        //     _genreRepository.GetAll().Select(g => new DGenre(g.Id, g.Name));
 
         public DGenre? GetById(int id)
         {

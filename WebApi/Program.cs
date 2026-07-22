@@ -32,7 +32,13 @@ builder
     .AddTypeExtension<AuthMutation>()
     .AddAuthorization()
     .AddFiltering()
-    .AddSorting();
+    .AddSorting()
+    .AddProjections()
+    .ModifyRequestOptions(o =>
+    {
+        o.IncludeExceptionDetails = true;
+    });
+
 
 // JWT Configuration
 var jwt = new JwtSettings
