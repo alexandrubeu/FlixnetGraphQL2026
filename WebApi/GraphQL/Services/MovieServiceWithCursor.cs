@@ -35,13 +35,13 @@ public class MovieServiceWithCursor(AppDbContext context,GenresService genresSer
         var dMovies = actualMovies.Select(movie =>
         {
             var genres = movie.Genres.Select(g => _genresService.MapToDto(g)).ToList();
-            return new DMovie(movie.Id, movie.TrailerUrl, movie.Published, movie.CreatedAt, genres)
+            return new DMovie()
             {
                 Id = movie.Id,
                 TrailerUrl = movie.TrailerUrl,
                 Published = movie.Published,
-                Genres = genres,
-                CreatedAt = movie.CreatedAt
+                CreatedAt = movie.CreatedAt,
+                Genres = genres
             };
         }).ToList();
 

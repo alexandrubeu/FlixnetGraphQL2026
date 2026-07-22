@@ -3,7 +3,7 @@
 //
 // namespace WebApi.GraphQL.Services;
 //
-// public class MoviesService : IMoviesService
+// public class MockMoviesService : IMoviesService
 // {
 //     public DMovie? GetById(int id)=>
 //         Db.Movies.FirstOrDefault(m => m.Id == id);
@@ -46,17 +46,13 @@
 //             ? Db.Movies.Max(m => m.Id) + 1
 //             : 1;
 //
-//         var createdAt = DateTime.UtcNow;
-//         var genres = Db.Genres
-//             .Where(g => input.GenreIds.Contains(g.Id))
-//             .ToList();
-//
 //         var movie = new DMovie(
 //             nextId,
 //             input.TrailerUrl,
 //             input.Published,
-//             createdAt,
-//             genres)
+//             Db.Genres
+//                 .Where(g => input.GenreIds.Contains(g.Id))
+//                 .ToList())
 //         {
 //             Title = input.Title,
 //             ImageUrl = input.ImageUrl,

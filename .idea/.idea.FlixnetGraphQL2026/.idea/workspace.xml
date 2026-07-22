@@ -18,21 +18,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2f79844-1202-4d23-bbac-6585b2fdcae4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BusinessLogic/Dtos/Common/PagedResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/GraphQL/Cursor/CursorEncoder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/GraphQL/Cursor/Types/Connection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/GraphQL/Cursor/Types/Edges.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/GraphQL/Cursor/Types/PageInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/GraphQL/Services/IMovieServiceWithCursor.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/GraphQL/Services/MovieServiceWithCursor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlixnetGraphQL2026/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/BusinessLogic.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/BusinessLogic.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Dtos/Movies/DMovie.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Dtos/Movies/DMovie.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/GenresService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/GenresService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/EMovie.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/EMovie.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/GraphQL/Queries/Query.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/GraphQL/Queries/Query.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/GraphQL/Services/MoviesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/GraphQL/Services/MoviesService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/GraphQL/Services/GenresService.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,16 +49,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/BusinessLogic/Dtos/Common/PagedResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Repository/CollectionRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Repository/GenreRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Repository/MovieRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApi/GraphQL/Cursor/CursorEncoder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApi/GraphQL/Cursor/Types/Connection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApi/GraphQL/Cursor/Types/Edges.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApi/GraphQL/Cursor/Types/PageInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApi/GraphQL/Services/IMovieServiceWithCursor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/WebApi/GraphQL/Services/MovieServiceWithCursor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/Program.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
@@ -80,61 +60,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0312299404324985" />
-      <entry key="MS500" value="2.773806197482897" />
-      <entry key="S2" value="7.529537453604727" />
-      <entry key="S5" value="12.122136457668342" />
-      <entry key="S10" value="15.944643720994593" />
-      <entry key="S30" value="23.964523438683333" />
-      <entry key="S60" value="36.95314167046346" />
-      <entry key="M2" value="56.50000195889366" />
-      <entry key="M5" value="81.30493045345683" />
-      <entry key="M10" value="95.77782125136422" />
-      <entry key="M15" value="103.66423666558443" />
-      <entry key="M30" value="116.83978806018959" />
-      <entry key="H1" value="135.01408823670104" />
-      <entry key="H2" value="199.30904366654576" />
-      <entry key="H4" value="333.65234843169935" />
-      <entry key="D1" value="650.8732006544926" />
-      <entry key="W1" value="747.0866953848854" />
+      <entry key="MS100" value="1.6954719110847467" />
+      <entry key="MS500" value="3.881202335414019" />
+      <entry key="S2" value="6.281852918062379" />
+      <entry key="S5" value="9.672608631744408" />
+      <entry key="S10" value="14.035629986933182" />
+      <entry key="S30" value="21.22186901950802" />
+      <entry key="S60" value="24.219810684957764" />
+      <entry key="M2" value="25.9987451784414" />
+      <entry key="M5" value="27.17088186583494" />
+      <entry key="M10" value="27.5804996362843" />
+      <entry key="M15" value="27.71922189650807" />
+      <entry key="M30" value="27.85912228078617" />
+      <entry key="H1" value="27.978004519885673" />
+      <entry key="H2" value="29.248809847321834" />
+      <entry key="H4" value="34.588057639239445" />
+      <entry key="D1" value="53.871366299305244" />
+      <entry key="W1" value="60.69855895375862" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="3.07E-321" />
-      <entry key="MS500" value="7.897117563044397E-65" />
-      <entry key="S2" value="9.426862029280755E-17" />
-      <entry key="S5" value="3.888184461377172E-7" />
-      <entry key="S10" value="6.235530820529373E-4" />
-      <entry key="S30" value="0.08543276800945772" />
-      <entry key="S60" value="0.2923024980202233" />
-      <entry key="M2" value="0.5443518828805679" />
-      <entry key="M5" value="0.934928414690868" />
-      <entry key="M10" value="1.9988604269780703" />
-      <entry key="M15" value="3.50048201788455" />
-      <entry key="M30" value="7.4193247083489675" />
-      <entry key="H1" value="12.846270729967026" />
-      <entry key="H2" value="25.511321427759935" />
-      <entry key="H4" value="47.73778707308086" />
-      <entry key="D1" value="93.89867408474572" />
-      <entry key="W1" value="106.67635599050259" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9179400543393323" />
-      <entry key="MS500" value="2.7188550358901624" />
-      <entry key="S2" value="7.488206583823334" />
-      <entry key="S5" value="12.020074259803103" />
-      <entry key="S10" value="15.795613863736113" />
-      <entry key="S30" value="23.891638278841302" />
-      <entry key="S60" value="37.10600731444667" />
-      <entry key="M2" value="56.93521080644313" />
-      <entry key="M5" value="82.17352277653058" />
-      <entry key="M10" value="97.73278718826316" />
-      <entry key="M15" value="107.1287162158993" />
-      <entry key="M30" value="124.23321721438059" />
-      <entry key="H1" value="147.8412748981576" />
-      <entry key="H2" value="224.80077071269005" />
-      <entry key="H4" value="381.37007467630855" />
-      <entry key="D1" value="744.7646642568686" />
-      <entry key="W1" value="853.7618624500392" />
+      <entry key="MS100" value="1.6257739784303786" />
+      <entry key="MS500" value="3.777376925753296" />
+      <entry key="S2" value="6.237332276454718" />
+      <entry key="S5" value="9.630756151860522" />
+      <entry key="S10" value="13.982045170930943" />
+      <entry key="S30" value="21.18109813794561" />
+      <entry key="S60" value="24.19434411840195" />
+      <entry key="M2" value="25.98448715441584" />
+      <entry key="M5" value="27.16477496050232" />
+      <entry key="M10" value="27.577375511412864" />
+      <entry key="M15" value="27.717123181389134" />
+      <entry key="M30" value="27.858064874240057" />
+      <entry key="H1" value="27.97747364530904" />
+      <entry key="H2" value="29.248541999118927" />
+      <entry key="H4" value="34.58791944771246" />
+      <entry key="D1" value="53.87134073290409" />
+      <entry key="W1" value="60.6985551732266" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -179,7 +159,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "gql-implementing-cursor",
+    "git-widget-placeholder": "gql",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
