@@ -55,7 +55,13 @@ public class MoviesService : IMoviesService
             VideoSource = input.VideoSource,
             TrailerUrl = input.TrailerUrl,
             Published = input.Published,
-            Genres = input.GenreIds.Select(id => new EGenre { Id = id }).ToList()
+            Genres = input.GenreIds.Select(id => new EGenre { Id = id }).ToList(),
+            CastAndCrew = input.CastAndCrew.Select(c => new ECastCrewCredit
+            {
+                Name = c.Name,
+                Role = c.Role,
+                StageName = c.StageName
+            }).ToList()
         };
 
         _movieRepository.Add(movie);
@@ -73,6 +79,12 @@ public class MoviesService : IMoviesService
         existing.TrailerUrl = input.TrailerUrl;
         existing.Published = input.Published;
         existing.Genres = input.GenreIds.Select(gid => new EGenre { Id = gid }).ToList();
+        existing.CastAndCrew = input.CastAndCrew.Select(c => new ECastCrewCredit
+        {
+            Name = c.Name,
+            Role = c.Role,
+            StageName = c.StageName
+        }).ToList();
         
         _movieRepository.Update(existing);
         return MapToDto(existing);
