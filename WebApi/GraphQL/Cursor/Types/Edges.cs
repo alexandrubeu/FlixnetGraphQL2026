@@ -4,5 +4,5 @@ public class Edges<T>
 {
     public string? Cursor { get; set; }
     
-    public T? Node { get; set; }
+    public T Node { get; set; }
 }
