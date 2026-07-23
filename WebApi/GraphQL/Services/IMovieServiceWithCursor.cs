@@ -5,7 +5,5 @@ namespace WebApi.GraphQL.Services;
 
 public interface IMovieServiceWithCursor
 {
-    public  Task<PagedResult<DMovie>> GetMoviesAsync(int pageSize, string? afterCursor);
-    
-
+    public Task<PagedResult<DMovie>> GetMoviesAsync(int pageSize, string? afterCursor);
 }

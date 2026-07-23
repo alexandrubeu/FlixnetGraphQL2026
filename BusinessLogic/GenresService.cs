@@ -8,7 +8,8 @@ namespace BusinessLogic
     {
         private readonly IGenreRepository _genreRepository;
 
-        public GenresService(IGenreRepository genreRepository) => _genreRepository = genreRepository;
+        public GenresService(IGenreRepository genreRepository) =>
+            _genreRepository = genreRepository;
 
         public IEnumerable<DGenre> GetAll() => _genreRepository.GetAll().Select(MapToDto);
 
@@ -28,7 +29,8 @@ namespace BusinessLogic
         public DGenre? Update(int id, DInputUpdateGenre input)
         {
             var existing = _genreRepository.GetById(id);
-            if (existing is null) return null; // repo can't tell us "not found" itself, so we check first
+            if (existing is null)
+                return null; // repo can't tell us "not found" itself, so we check first
 
             existing.Name = input.Name;
             _genreRepository.Update(existing);
@@ -38,15 +40,13 @@ namespace BusinessLogic
         public bool Delete(int id)
         {
             var existing = _genreRepository.GetById(id);
-            if (existing is null) return false;
+            if (existing is null)
+                return false;
 
             _genreRepository.Delete(id);
             return true;
         }
 
-        public DGenre MapToDto(EGenre genre) => new(
-            genre.Id,
-            genre.Name
-        );
+        public DGenre MapToDto(EGenre genre) => new(genre.Id, genre.Name);
     }
 }

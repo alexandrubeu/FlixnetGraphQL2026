@@ -5,6 +5,7 @@ namespace Repository
     public class GenreRepository : IGenreRepository
     {
         private readonly AppDbContext _context;
+
         public GenreRepository(AppDbContext context) => _context = context;
 
         public IEnumerable<EGenre> GetAll() => _context.Genres.ToList();
@@ -20,7 +21,8 @@ namespace Repository
         public void Update(EGenre genre)
         {
             var existing = _context.Genres.Find(genre.Id);
-            if (existing is null) return;
+            if (existing is null)
+                return;
 
             existing.Name = genre.Name;
             _context.SaveChanges();
@@ -29,7 +31,8 @@ namespace Repository
         public void Delete(int id)
         {
             var existing = _context.Genres.Find(id);
-            if (existing is null) return;
+            if (existing is null)
+                return;
 
             _context.Genres.Remove(existing);
             _context.SaveChanges();

@@ -7,7 +7,7 @@ namespace BusinessLogic;
 public class MoviesService : IMoviesService
 {
     private readonly IMovieRepository _movieRepository;
-    
+
     public MoviesService(IMovieRepository movieRepository) => _movieRepository = movieRepository;
 
     public DMovie? GetById(int id)
@@ -19,14 +19,14 @@ public class MoviesService : IMoviesService
     public Pagination<DMovieSummary> GetAll(string? term, PaginationParam paginationParam)
     {
         var query = _movieRepository.GetAll();
-        
+
         if (!string.IsNullOrWhiteSpace(term))
         {
-            query = query.Where(m => 
+            query = query.Where(m =>
                 m.Title.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList();
         }
         var total = query.Count();
-        
+
         var items = query
             .Skip(paginationParam.Page * paginationParam.PerPage)
             .Take(paginationParam.PerPage)
@@ -85,7 +85,7 @@ public class MoviesService : IMoviesService
             Role = c.Role,
             StageName = c.StageName
         }).ToList();
-        
+
         _movieRepository.Update(existing);
         return MapToDto(existing);
     }
@@ -98,7 +98,7 @@ public class MoviesService : IMoviesService
         _movieRepository.Delete(id);
         return true;
     }
-    
+
     private static DMovie MapToDto(EMovie movie) => new()
     {
         Id = movie.Id,
@@ -107,7 +107,7 @@ public class MoviesService : IMoviesService
         VideoSource = movie.VideoSource,
         TrailerUrl = movie.TrailerUrl,
         Published = movie.Published,
-        Genres = movie.Genres.Select(g => new DGenre (g.Id, g.Name )).ToList(),
+        Genres = movie.Genres.Select(g => new DGenre(g.Id, g.Name)).ToList(),
         CastAndCrew = movie.CastAndCrew.Select(c => new DCastCrewCredit
         {
             Id = c.Id,

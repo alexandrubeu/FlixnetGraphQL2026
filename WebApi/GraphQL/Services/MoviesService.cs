@@ -7,19 +7,19 @@
 // {
 //     public DMovie? GetById(int id)=>
 //         Db.Movies.FirstOrDefault(m => m.Id == id);
-//     
+//
 //
 //     public Pagination<DMovieSummary> GetAll(string? term, PaginationParam paginationParam)
 //     {
 //         var query = Db.Movies;
-//         
+//
 //         if (!string.IsNullOrWhiteSpace(term))
 //         {
-//             query = query.Where(m => 
+//             query = query.Where(m =>
 //                 m.Title.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList();
 //         }
 //         var total = query.Count;
-//         
+//
 //         var items = query
 //             .Skip(paginationParam.Page * paginationParam.PerPage)
 //             .Take(paginationParam.PerPage)
@@ -38,7 +38,7 @@
 //             Items = items
 //         };
 //     }
-//     
+//
 //
 //     public DMovie Add(DInputCreateMovie input)
 //     {
@@ -68,7 +68,7 @@
 //
 //         return movie;
 //     }
-//     
+//
 //
 //     public DMovie? Update(int id, DInputUpdateMovie input)
 //     {
@@ -85,11 +85,11 @@
 //         movie.Genres = Db.Genres
 //             .Where(g => input.GenreIds.Contains(g.Id))
 //             .ToList();
-//         // cast crew 
+//         // cast crew
 //
 //         return movie;
 //     }
-//     
+//
 //
 //     public bool Delete(int id)
 //     {
