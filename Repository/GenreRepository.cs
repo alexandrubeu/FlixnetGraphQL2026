@@ -8,6 +8,7 @@ namespace Repository
         public GenreRepository(AppDbContext context) => _context = context;
 
         public IEnumerable<EGenre> GetAll() => _context.Genres.ToList();
+        //public IQueryable<EGenre> GetAll() => _context.Genres;
 
         public EGenre? GetById(int id) => _context.Genres.Find(id);
 
