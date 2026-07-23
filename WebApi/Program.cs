@@ -96,7 +96,11 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
-    await RolePermissionSeeder.SeedRolePermissionsAsync(scope.ServiceProvider);
+{
+    await Seeder.SeedRolePermissionsAsync(scope.ServiceProvider);
+    await Seeder.SeedAdminUserAsync(scope.ServiceProvider,"admin","AdminP@ssw0rd");
+}
+
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
