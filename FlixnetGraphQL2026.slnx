@@ -3,4 +3,5 @@
   <Project Path="Entities/Entities.csproj" />
   <Project Path="Repository/Repository.csproj" />
   <Project Path="WebApi/WebApi.csproj" />
+  <Project Path="WebApi.Tests/WebApi.Tests.csproj" />
 </Solution>

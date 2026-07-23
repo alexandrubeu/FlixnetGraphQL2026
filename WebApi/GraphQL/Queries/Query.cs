@@ -1,6 +1,10 @@
 using BusinessLogic;
 using BusinessLogic.Dtos;
+using HotChocolate.Types.Pagination;
+using WebApi.GraphQL.Cursor;
+using WebApi.GraphQL.Cursor.Types;
 using WebApi.GraphQL.Services;
+using PageInfo = WebApi.GraphQL.Cursor.Types.PageInfo;
 
 namespace WebApi.GraphQL.Queries;
 
@@ -16,12 +20,33 @@ public class Query
         int id,
         [Service] IMoviesService moviesService)
         => moviesService.GetById(id);
-    
-    public Task<PagedResult<DMovie>> GetMoviesWithCursor(
-        int pageSize, 
+
+    public async Task<Cursor.Types.Connection<DMovie>> GetMoviesWithCursor(
+        int pageSize,
         string? afterCursor,
         [Service] IMovieServiceWithCursor movieServiceWithCurosr)
-        => movieServiceWithCurosr.GetMoviesAsync(pageSize, afterCursor);
+    {
+        var pagedResult = await movieServiceWithCurosr.GetMoviesAsync(pageSize, afterCursor);
+
+        var edges = pagedResult.Items.Select(movie => new Edges<DMovie>
+        {
+            Node = movie,
+            Cursor = CursorEncoder.Encoder(movie.CreatedAt, movie.Id)
+        }).ToList();
+
+        return new Cursor.Types.Connection<DMovie>()
+        {
+            EdgesList = edges,
+            PageInfo = new PageInfo
+            {
+                HasNextPage = pagedResult.HasNextPage,
+                HasPreviousPage = pagedResult.HasPreviousPage,
+                StartCursor = edges.FirstOrDefault()?.Cursor,
+                EndCursor = edges.LastOrDefault()?.Cursor
+            }
+        };
+    }
+        
     
     public IEnumerable<DGenre> GetGenres(
         [Service] IGenresService genresService) 

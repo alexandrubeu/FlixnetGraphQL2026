@@ -4,7 +4,7 @@ public class CursorEncoder
 {
     public static string Encoder(DateTime date, int id)
     {
-        var rawcursor = $"{date:0}_{id}";
+        var rawcursor = $"{date:O}_{id}";
         var bytes = System.Text.Encoding.UTF8.GetBytes(rawcursor);
         return Convert.ToBase64String(bytes);
     }
