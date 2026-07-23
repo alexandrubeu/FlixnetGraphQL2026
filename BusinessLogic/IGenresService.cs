@@ -4,7 +4,8 @@ namespace BusinessLogic
 {
     public interface IGenresService
     {
-        IEnumerable<DGenre> GetAll();
+        IEnumerable<DGenre> GetAll(string? name, bool ascending);
+        //IQueryable<DGenre> GetAll();
         DGenre? GetById(int id);
         DGenre Add(DInputCreateGenre input);
         DGenre? Update(int id, DInputUpdateGenre input);

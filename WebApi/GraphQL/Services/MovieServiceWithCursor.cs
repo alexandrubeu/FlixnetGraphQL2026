@@ -10,7 +10,7 @@ public class MovieServiceWithCursor(AppDbContext context, GenresService genresSe
 {
     private readonly AppDbContext _context = context;
     private readonly GenresService _genresService = genresService;
-    public Task<PagedResult<DMovie>> GetMoviesAsync(int pageSize, string? afterCursor)
+    public  Task<PagedResult<DMovie>> GetMoviesAsync(int pageSize, string? afterCursor)
     {
         var query = _context.Movies.AsQueryable();
 

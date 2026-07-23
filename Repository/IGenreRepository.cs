@@ -4,8 +4,9 @@ namespace Repository
 {
     public interface IGenreRepository
     {
-        EGenre? GetById(int id);
         IEnumerable<EGenre> GetAll();
+        //IQueryable<EGenre> GetAll();
+        EGenre? GetById(int id);
         void Add(EGenre genre);
         void Update(EGenre genre);
         void Delete(int id);
